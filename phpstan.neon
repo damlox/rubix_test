@@ -1,0 +1,16 @@
+includes:
+    - phpstan-baseline.neon
+parameters:
+    level: 8
+    paths:
+        - src
+    excludes_analyse:
+    ignoreErrors:
+    reportUnmatchedIgnoredErrors: true
+    symfony:
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+        console_application_loader: tests/console-application.php
+    doctrine:
+        objectManagerLoader: tests/object-manager.php
+    bootstrapFiles:
+        - vendor/autoload.php

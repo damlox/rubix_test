@@ -1,0 +1,15 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+api_login_check:
+    path: /api/login
+    methods: ['POST']
+
+api_refresh_token:
+    path: /api/token/refresh
+    methods: ['POST']
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation

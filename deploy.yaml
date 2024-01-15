@@ -1,0 +1,35 @@
+import:
+  - recipe/symfony.php
+
+config:
+  repository: 'git@gitlab.com:repo/path'
+  git_ssh_command: 'ssh'
+  default_timeout: null
+  shared_files:
+    - '.env.local'
+  shared_dirs:
+    - 'var/data'
+    - 'var/training'
+    - 'var/log'
+    - 'config/jwt'
+  allow_anonymous_stats: false
+  writable_mode: 'chmod'
+  writable_dirs: []
+
+hosts:
+  1.2.3.4:
+    port: 1234
+    remote_user: 'user'
+    deploy_path: '/path/of/www'
+    'bin/php': '/usr/bin/php'
+    'bin/composer': '/usr/bin/php /usr/local/bin/composer'
+
+tasks:
+  restart_messenger:
+    - run: '{{bin/php}} {{deploy_path}}/current/bin/console messenger:stop-workers'
+
+after:
+  deploy:failed: deploy:unlock
+  deploy:symlink:
+    - restart_messenger
+    - database:migrate

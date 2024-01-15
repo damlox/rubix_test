@@ -1,0 +1,70 @@
+sync:
+  defaults:
+    ignore:
+      paths:
+        - .DS_Store
+    configurationBeta:
+      permissions:
+        defaultOwner: "id:1000"
+        defaultGroup: "id:1000"
+  code:
+    alpha: "./"
+    beta: "docker://rubbixml_prezentacja-ml-backend-php-1/var/www/html"
+    mode: "two-way-resolved"
+    ignore:
+      vcs: true
+      paths:
+        - ".idea/"
+#        - "var/cache/"
+        - "var/log/"
+        - "var/report_log/"
+        - "var/scripts_states/"
+        - "var/scripts_states/"
+        - "var/sessions/"
+        - "vendor/"
+        - "bin/.phpunit/"
+        - "public/build/"
+  composerjson:
+    alpha: "./composer.json"
+    beta: "docker://rubbixml_prezentacja-ml-backend-php-1/var/www/html/composer.json"
+    mode: "two-way-resolved"
+    watch:
+      pollingInterval: 2
+    permissions:
+      defaultFileMode: 666
+      defaultDirectoryMode: 777
+    ignore:
+      vcs: false
+    symlink:
+      mode: "ignore"
+  composerlock:
+    alpha: "./composer.lock"
+    beta: "docker://rubbixml_prezentacja-ml-backend-php-1/var/www/html/composer.lock"
+    mode: "two-way-resolved"
+    watch:
+      pollingInterval: 2
+    permissions:
+      defaultFileMode: 666
+      defaultDirectoryMode: 777
+    ignore:
+      vcs: false
+    symlink:
+      mode: "ignore"
+  vendor:
+    alpha: "./vendor"
+    beta: "docker://rubbixml_prezentacja-ml-backend-php-1/var/www/html/vendor"
+    mode: "two-way-resolved"
+    watch:
+      pollingInterval: 5
+    ignore:
+      vcs: false
+  phpunit:
+    alpha: "./bin/.phpunit"
+    beta: "docker://rubbixml_prezentacja-ml-backend-php-1/var/www/html/bin/.phpunit"
+    mode: "two-way-resolved"
+    watch:
+      pollingInterval: 5
+    ignore:
+      vcs: false
+    symlink:
+      mode: "ignore"
